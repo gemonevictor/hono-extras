@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th>
+      <span [innerHTML]="updateLabel" class="p-2 col-2 col-sm-2"></span>
+    </th>
+    <th>
+      <span [innerHTML]="dataLabel" class="p-2 col-2 col-sm-2"></span>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let state of states" class="list-item">
+    <td>
+      <span [innerHTML]="state.updateTime | date:'medium': 'UTC'" class="p-2 col-2 col-sm-2"></span>
+    </td>
+    <td>
+      <span [innerHTML]="state.binaryData" class="p-2 col-2 col-sm-2"></span>
+    </td>
+  </tr>
+  </tbody>
+</table>
