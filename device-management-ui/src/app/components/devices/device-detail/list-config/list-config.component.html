@@ -1,27 +1,27 @@
 <table class="table">
   <thead>
   <tr>
-    <th>
-      <span [innerHTML]="versionLabel" class="p-2 col-3 col-sm-2"></span>
+    <th class="p-2 col-4">
+      <span [innerHTML]="versionLabel"></span>
     </th>
-    <th>
-      <span [innerHTML]="updateLabel" class="p-2 col-3 col-sm-2"></span>
+    <th class="p-2 col-4">
+      <span [innerHTML]="updateLabel"></span>
     </th>
-    <th>
-      <span [innerHTML]="dataLabel" class="p-2 col-3 col-sm-2"></span>
+    <th class="p-2 col-4 ml-auto last-column">
+      <span [innerHTML]="dataLabel"></span>
     </th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let config of configs; let i = index" class="list-item">
-    <td>
-      <span [innerHTML]="config.version" class="p-2 col-3 col-sm-2"></span>
+    <td class="p-2 col-4">
+      <span [innerHTML]="config.version"></span>
     </td>
-    <td>
-      <span [innerHTML]="config.cloudUpdateTime  | date:'medium': 'UTC'" class="p-2 col-3 col-sm-2"></span>
+    <td class="p-2 col-4">
+      <span [innerHTML]="config.cloudUpdateTime  | date:'medium': 'UTC'"></span>
     </td>
-    <td>
-      <span [innerHTML]="config.binaryData" class="p-2 col-3 col-sm-2"></span>
+    <td class="p-2 col-4 ml-auto last-column">
+      <span [innerHTML]="config.binaryData"></span>
       <div class="form-check form-switch">
         <input
           [(ngModel)]="showTextDataArray[i]"

@@ -31,11 +31,10 @@ export class ListAuthenticationComponent implements OnInit, OnChanges {
   protected editLabel: string = 'Edit';
   protected editDisabledLabel: string = 'Edit not possible due to authentication method';
   protected deleteLabel: string = 'Delete';
+  protected authenticationValues: AuthenticationValue[] = [];
   private authIdKey: string = 'auth-id';
   private notBeforeKey: string = 'not-before';
   private notAfterKey: string = 'not-after';
-
-  protected authenticationValues: AuthenticationValue[] = [];
 
   constructor(private modalService: NgbModal,
               private credentialsService: CredentialsService,
@@ -89,6 +88,17 @@ export class ListAuthenticationComponent implements OnInit, OnChanges {
         }
       }
     });
+  }
+
+  protected getAuthenticationType(type: CredentialTypes | string | undefined): string {
+    if (!type) {
+      return '-';
+    }
+    if (type == CredentialTypes.RPK) {
+      return 'JWT based'
+    } else {
+      return 'Password based';
+    }
   }
 
   private saveCredentials(authenticationValue: AuthenticationValue) {

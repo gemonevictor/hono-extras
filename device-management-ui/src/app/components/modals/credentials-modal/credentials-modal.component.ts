@@ -40,6 +40,11 @@ export class CredentialsModalComponent implements OnInit {
   protected authType: string = '';
   protected authId: string = '';
 
+  protected publicKeyHeader: string = '-----BEGIN PUBLIC KEY-----';
+  protected publicKeyFooter: string = '-----END PUBLIC KEY-----';
+  protected certHeader: string = '-----BEGIN CERTIFICATE-----';
+  protected certFooter: string = '-----END CERTIFICATE-----';
+
   constructor(private activeModal: NgbActiveModal,
               private credentialsService: CredentialsService,
               private notificationService: NotificationService) {
@@ -82,6 +87,7 @@ export class CredentialsModalComponent implements OnInit {
         this.credential.type = this.authType;
         this.credentials.push(this.credential);
       }
+      this.trimKey(this.credential);
       this.credentialsService.save(this.deviceId, this.tenantId, this.credentials).subscribe(() => {
         this.activeModal.close(this.credentials);
       }, (error) => {
@@ -95,6 +101,14 @@ export class CredentialsModalComponent implements OnInit {
         this.notificationService.error("Could not save credentials.")
       });
     }
+  }
+
+  protected trimKey(credential: Credentials) {
+    credential.secrets[0].key =
+      credential.secrets[0].key?.replaceAll(this.publicKeyHeader,'')?.replaceAll(this.publicKeyFooter,'')?.replaceAll(/\n/g, '');
+
+    credential.secrets[0].cert =
+    credential.secrets[0].cert?.replaceAll(this.certHeader,'')?.replaceAll(this.certFooter,'')?.replaceAll(/\n/g, '');
   }
 
   protected isInvalid(): boolean {

@@ -1,11 +1,11 @@
 <div class="form-group">
   <div class="btn-group btn-toggle">
-    <button (click)="setUsePublicKey(true)" [ngClass]="usePublicKey ? 'btn-primary active' : 'btn-primary inactive'"
+    <button [disabled]="!isNewCredentials" (click)="setUsePublicKey(true)" [ngClass]="usePublicKey ? 'btn-primary active' : 'btn-primary inactive'"
             class="btn">
       <span class="caret"></span>
       <span [innerHTML]="publicKeyLabel"></span>
     </button>
-    <button (click)="setUsePublicKey(false)" [ngClass]="usePublicKey ? 'btn-primary inactive' : 'btn-primary active'"
+    <button [disabled]="!isNewCredentials" (click)="setUsePublicKey(false)" [ngClass]="usePublicKey ? 'btn-primary inactive' : 'btn-primary active'"
             class="btn">
       <span class="caret"></span>
       <span [innerHTML]="certificateLabel"></span>
@@ -30,7 +30,6 @@
       (change)="onRpkSecretChanged()"
       (input)="onRpkSecretChanged()"
       [(ngModel)]="rpkSecret.key"
-      [ngbTooltip]="publicKeyTooltip"
       class="form-control"
       id="publicKeyValue"
       rows="4">
@@ -94,4 +93,9 @@
       rows="4">
     </textarea>
   </div>
+
+  <div class="alert alert-dark text-center">
+    <span [innerHTML]="certTooltip"></span>
+  </div>
+
 </div>

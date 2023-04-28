@@ -60,25 +60,25 @@
   <table class="table">
     <thead>
     <tr>
-      <th (sort)="onSort($event)" class="sortable" scope="col" sortable="id">
-        <span [innerHTML]="idLabel" class="p-2"></span>
+      <th (sort)="onSort($event)" class="sortable p-2" scope="col" sortable="id">
+        <span [innerHTML]="idLabel"></span>
       </th>
-      <th>
-        <span [innerHTML]="messagingTypeLabel" class="p-2"></span>
+      <th class="p2">
+        <span [innerHTML]="messagingTypeLabel"></span>
       </th>
-      <th>
-        <span [innerHTML]="actionsLabel" class="p-2 ml-auto last-column"></span>
+      <th class="p-2 ml-auto last-column">
+        <span [innerHTML]="actionsLabel"></span>
       </th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let tenant of (tenants | searchFilter:searchTerm)"
         class="list-item">
-      <td class="selectElement" (click)="selectTenant(tenant)">
-        <span [innerHTML]="tenant.id" class="p-2"></span>
+      <td class="selectElement p2" (click)="selectTenant(tenant)">
+        <span [innerHTML]="tenant.id"></span>
       </td>
-      <td>
-        <span [innerHTML]="getMessagingType(tenant.ext)" class="p-2"></span>
+      <td class="p-2">
+        <span [innerHTML]="getMessagingType(tenant.ext)"></span>
       </td>
       <td class="p-2 col-sm-1 ml-auto last-column">
         <button (click)="editTenant(tenant)" [ngbTooltip]="editLabel" class="btn btn-sm btn-primary" type="button">

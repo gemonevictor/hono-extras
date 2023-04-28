@@ -13,6 +13,10 @@ export class DeviceRpkModalComponent implements OnInit {
 
   @Input()
   public rpkSecret: Secret = new Secret();
+
+  @Input()
+  public isNewCredentials: boolean = true;
+
   protected algorithmLabel: string = 'Algorithm';
   protected publicKeyValueLabel: string = 'Public Key value';
   protected certValueLabel: string = 'X509 Certificate value';
@@ -20,7 +24,7 @@ export class DeviceRpkModalComponent implements OnInit {
   protected notAfterLabel: string = 'Not after';
   protected publicKeyLabel: string = 'Public Key';
   protected certificateLabel: string = 'X509 Certificate';
-  protected publicKeyTooltip: string = 'The Public Key must not contain the Header and Footer `BEGIN -´ and ´END PUBLIC KEY´.';
+  protected certTooltip: string = 'Please be aware that the X509 Certificate will be converted into a Public Key after it is saved. So you won´t longer see information about the certificate, but the public key instead.'
 
   protected usePublicKey: boolean = true;
 

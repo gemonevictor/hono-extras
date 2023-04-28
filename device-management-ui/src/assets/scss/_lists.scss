@@ -54,12 +54,11 @@
         justify-content: center;
         line-height: 1;
         display: flex;
-        right: -20px;
-        top: 0;
         height: 100%;
         width: 20px;
         position: absolute;
-        top: 9px;
+        top: 0;
+        right: 0;
       }
 
       &:before {

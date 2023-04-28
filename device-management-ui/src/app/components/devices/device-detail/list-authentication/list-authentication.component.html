@@ -1,38 +1,38 @@
 <table class="table">
   <thead>
   <tr>
-    <th>
-      <span [innerHTML]="authenticationTypeLabel" class="p-2 col-5 col-sm-2"></span>
+    <th class="p-2 col-2">
+      <span [innerHTML]="authenticationTypeLabel"></span>
     </th>
-    <th>
-      <span [innerHTML]="authIdLabel" class="p-2 col-5 col-sm-2"></span>
+    <th class="p-2 col-2">
+      <span [innerHTML]="authIdLabel"></span>
     </th>
-    <th>
-      <span [innerHTML]="secretIdLabel" class="p-2 col-5 col-sm-2"></span>
+    <th class="p-2 col-4">
+      <span [innerHTML]="secretIdLabel"></span>
     </th>
-    <th>
-      <span [innerHTML]="expiryDateLabel" class="p-2 col-5 col-sm-2"></span>
+    <th class="p-2 col-3">
+      <span [innerHTML]="expiryDateLabel"></span>
     </th>
-    <th>
-      <span [innerHTML]="actionsLabel" class="p-2 col-sm-1 ml-auto last-column"></span>
+    <th class="p-2 col-1 ml-auto last-column">
+      <span [innerHTML]="actionsLabel"></span>
     </th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let authenticationValue of authenticationValues" class="list-item">
-    <td>
-      <span [innerHTML]="authenticationValue.type" class="p-2 col-5 col-sm-2"></span>
+    <td class="p-2 col-2">
+      <span [innerHTML]="getAuthenticationType(authenticationValue.type)"></span>
     </td>
-    <td>
-      <span [innerHTML]="authenticationValue['auth-id']" class="p-2 col-5 col-sm-2"></span>
+    <td class="p-2 col-2">
+      <span [innerHTML]="authenticationValue['auth-id']"></span>
     </td>
-    <td>
-      <span [innerHTML]="authenticationValue.id" class="p-2 col-5 col-sm-2"></span>
+    <td class="p-2 col-4">
+      <span [innerHTML]="authenticationValue.id"></span>
     </td>
-    <td>
-      <span [innerHTML]="authenticationValue['not-after']  | date:'medium': 'UTC'" class="p-2 col-5 col-sm-2"></span>
+    <td class="p-2 col-3">
+      <span [innerHTML]="authenticationValue['not-after']  | date:'medium': 'UTC'"></span>
     </td>
-    <td class="p-2 col-sm-1 ml-auto last-column">
+    <td class="p-2 col-1 ml-auto last-column">
       <div [ngbTooltip]="isEditable(authenticationValue) ? editLabel : editDisabledLabel" class="auth-btn-wrapper">
         <button (click)="edit(authenticationValue)" [disabled]="!isEditable(authenticationValue)"
           class="btn-auth btn btn-sm btn-primary" type="button">

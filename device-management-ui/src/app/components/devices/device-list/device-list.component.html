@@ -55,14 +55,14 @@
   <table class="table">
     <thead>
     <tr>
-      <th (sort)="onSort($event)" class="sortable" scope="col" sortable="id">
-        <span class="p-2" [innerHTML]="deviceIdLabel"></span>
+      <th (sort)="onSort($event)" class="p-2 sortable" scope="col" sortable="id">
+        <span [innerHTML]="deviceIdLabel"></span>
       </th>
-      <th (sort)="onSort($event)" class="sortable" scope="col" sortable="status.created">
-        <span class="p-2" [innerHTML]="deviceCreatedLabel"></span>
+      <th (sort)="onSort($event)" class="p-2 sortable" scope="col" sortable="status.created">
+        <span [innerHTML]="deviceCreatedLabel"></span>
       </th>
-      <th>
-        <span class="p-2 ml-auto last-column" [innerHTML]="actionsLabel"></span>
+      <th class="p-2 ml-auto last-column" >
+        <span [innerHTML]="actionsLabel"></span>
       </th>
     </tr>
     </thead>
@@ -72,8 +72,8 @@
       <td (click)="selectDevice(device)" class="selectElement">
         <span [innerHTML]="device.id" class="p-2"></span>
       </td>
-      <td>
-        <span class="p-2" [innerHTML]="getCreationTime(device.status) | date:'medium': 'UTC'"></span>
+      <td class="p-2">
+        <span [innerHTML]="getCreationTime(device.status) | date:'medium': 'UTC'"></span>
       </td>
       <td class="p-2 col-sm-1 ml-auto last-column">
         <button type="button" class="btn btn-sm btn-secondary" [ngbTooltip]="deleteLabel" (click)="deleteDevice(device)">

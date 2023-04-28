@@ -1,21 +1,21 @@
 <table class="table">
   <thead>
   <tr>
-    <th>
-      <span [innerHTML]="updateLabel" class="p-2 col-2 col-sm-2"></span>
+    <th class="p-2 col-6 col-sm-2">
+      <span [innerHTML]="updateLabel"></span>
     </th>
-    <th>
-      <span [innerHTML]="dataLabel" class="p-2 col-2 col-sm-2"></span>
+    <th class="p-2 col-6 col-sm-2">
+      <span [innerHTML]="dataLabel"></span>
     </th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let state of states" class="list-item">
-    <td>
-      <span [innerHTML]="state.updateTime | date:'medium': 'UTC'" class="p-2 col-2 col-sm-2"></span>
+    <td class="p-2 col-6 col-sm-2">
+      <span [innerHTML]="state.updateTime | date:'medium': 'UTC'"></span>
     </td>
-    <td>
-      <span [innerHTML]="state.binaryData" class="p-2 col-2 col-sm-2"></span>
+    <td class="p-2 col-6 col-sm-2">
+      <span [innerHTML]="state.binaryData"></span>
     </td>
   </tr>
   </tbody>
