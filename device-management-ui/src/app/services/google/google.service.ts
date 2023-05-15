@@ -17,23 +17,25 @@ const oAuthConfig: AuthConfig = {
 export class GoogleService {
 
   constructor(private oauthService: OAuthService, private router: Router) {
-    this.oauthService.configure(oAuthConfig);
-    this.oauthService.loadDiscoveryDocument().then(() => {
-      this.oauthService.tryLoginImplicitFlow().then(() => {
-        if (!this.oauthService.hasValidAccessToken()) {
-          console.log('No valid access token, starting implicit flow.');
-          this.oauthService.initLoginFlow()
-        } else {
-          this.oauthService.loadUserProfile().then((user) => {
-            this.router.navigate(['/tenant-list']);
-          });
-        }
+    if (!this.oauthService.hasValidAccessToken()) {
+      this.oauthService.configure(oAuthConfig);
+      this.oauthService.loadDiscoveryDocument().then(() => {
+        this.oauthService.tryLoginImplicitFlow().then(() => {
+          if (!this.oauthService.hasValidAccessToken()) {
+            console.log('No valid access token, starting implicit flow.');
+            this.oauthService.initLoginFlow()
+          } else {
+            this.oauthService.loadUserProfile().then((user) => {
+              this.router.navigate(['/tenant-list']);
+            });
+          }
+        }, (error) => {
+          console.log(error);
+        });
       }, (error) => {
         console.log(error);
       });
-    }, (error) => {
-      console.log(error);
-    });
+    }
   }
 
   public getIdToken() {

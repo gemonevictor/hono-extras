@@ -8,9 +8,9 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      {path: 'tenant-list', component: TenantListComponent},
+      {path: 'device-detail/:id', component: DeviceDetailComponent},
       {path: 'tenant-detail/:id', component: TenantDetailComponent},
-      {path: 'device-detail/:id', component: DeviceDetailComponent}
+      {path: 'tenant-list', component: TenantListComponent}
     ]
   }
 ];

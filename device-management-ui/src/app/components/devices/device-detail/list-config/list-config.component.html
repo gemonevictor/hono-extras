@@ -21,16 +21,9 @@
       <span [innerHTML]="config.cloudUpdateTime  | date:'medium': 'UTC'"></span>
     </td>
     <td class="p-2 col-4 ml-auto last-column">
-      <span [innerHTML]="config.binaryData"></span>
-      <div class="form-check form-switch">
-        <input
-          [(ngModel)]="showTextDataArray[i]"
-          [checked]="showTextDataArray[i] === true"
-          (change)="showTextData(config, showTextDataArray[i])"
-          class="form-check-input"
-          id="notAfterSwitch{{i}}" type="checkbox">
-        <label [innerHTML]="showTextLabel" class="form-check-label" for="notAfterSwitch{{i}}"></label>
-      </div>
+      <app-config-accordion
+        [config]="config">
+      </app-config-accordion>
     </td>
   </tr>
   </tbody>

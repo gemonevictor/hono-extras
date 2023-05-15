@@ -43,6 +43,8 @@ import {SortableTableDirective} from './services/sortable-table/sortable-table.d
 import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {fas} from "@fortawesome/free-solid-svg-icons";
 import {ToastContainerComponent} from './components/toast-container/toast-container.component';
+import {ConfigAccordionComponent} from './components/devices/device-detail/list-config/config-accordion/config-accordion.component';
+import {TruncatePipe} from './shared/truncate.pipe';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import {ToastContainerComponent} from './components/toast-container/toast-contai
     CredentialsModalComponent,
     LoaderSpinnerComponent,
     SortableTableDirective,
-    ToastContainerComponent
+    ToastContainerComponent,
+    ConfigAccordionComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
