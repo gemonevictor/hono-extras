@@ -51,11 +51,11 @@ export class CredentialsModalComponent implements OnInit {
 
   }
 
-  get isPassword() {
+  protected get isPassword() {
     return this.authType === CredentialTypes.HASHED_PASSWORD;
   }
 
-  get isRpk() {
+  protected get isRpk() {
     return this.authType === CredentialTypes.RPK;
   }
 

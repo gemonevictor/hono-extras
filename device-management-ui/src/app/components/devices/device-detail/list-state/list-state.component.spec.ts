@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ListStateComponent } from './list-state.component';
+import {ListStateComponent} from './list-state.component';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {OAuthModule} from "angular-oauth2-oidc";
 
 describe('ListStateComponent', () => {
   let component: ListStateComponent;
@@ -8,9 +10,10 @@ describe('ListStateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListStateComponent ]
+      imports: [HttpClientTestingModule, OAuthModule.forRoot()],
+      declarations: [ListStateComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ListStateComponent);
     component = fixture.componentInstance;

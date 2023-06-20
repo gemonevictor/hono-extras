@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ModalFooterComponent } from './modal-footer.component';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ModalFooterComponent} from './modal-footer.component';
+import {FontAwesomeTestingModule} from "@fortawesome/angular-fontawesome/testing";
 
 describe('ModalFooterComponent', () => {
   let component: ModalFooterComponent;
@@ -8,9 +8,10 @@ describe('ModalFooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalFooterComponent ]
+      imports: [FontAwesomeTestingModule],
+      declarations: [ModalFooterComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ModalFooterComponent);
     component = fixture.componentInstance;
@@ -20,4 +21,17 @@ describe('ModalFooterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit confirmButtonPressed event when confirm() is called', () => {
+    spyOn(component.confirmButtonPressed, 'emit');
+    component['confirm']();
+    expect(component.confirmButtonPressed.emit).toHaveBeenCalledWith(true);
+  });
+
+  it('should emit cancelButtonPressed event when cancel() is called', () => {
+    spyOn(component.cancelButtonPressed, 'emit');
+    component['cancel']();
+    expect(component.cancelButtonPressed.emit).toHaveBeenCalledWith(true);
+  });
+
 });

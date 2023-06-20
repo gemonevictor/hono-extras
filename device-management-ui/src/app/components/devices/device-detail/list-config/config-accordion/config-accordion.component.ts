@@ -9,7 +9,7 @@ import {Config} from "../../../../../models/config";
 export class ConfigAccordionComponent implements OnInit {
 
   @Input()
-  config: Config = new Config();
+  public config: Config = new Config();
 
   protected fullConfig: string = '';
 

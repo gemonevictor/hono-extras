@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ModalHeadComponent } from './modal-head.component';
+import {ModalHeadComponent} from './modal-head.component';
 
 describe('ModalHeadComponent', () => {
   let component: ModalHeadComponent;
@@ -8,9 +8,9 @@ describe('ModalHeadComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalHeadComponent ]
+      declarations: [ModalHeadComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ModalHeadComponent);
     component = fixture.componentInstance;
@@ -20,4 +20,11 @@ describe('ModalHeadComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit the closeModal event when cancel() is called', () => {
+    spyOn(component.closeModal, 'emit');
+    component['cancel']();
+    expect(component.closeModal.emit).toHaveBeenCalledWith(true);
+  });
+
 });

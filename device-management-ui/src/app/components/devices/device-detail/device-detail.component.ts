@@ -13,6 +13,7 @@ import {CredentialsModalComponent} from '../../modals/credentials-modal/credenti
 import {Credentials} from 'src/app/models/credentials/credentials';
 import {CredentialsService} from "../../../services/credentials/credentials.service";
 import {NotificationService} from "../../../services/notification/notification.service";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-device-detail',
@@ -41,7 +42,8 @@ export class DeviceDetailComponent {
               private deviceService: DeviceService,
               private configService: ConfigService,
               private credentialsService: CredentialsService,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              private datePipe: DatePipe) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation) {
       const state = navigation.extras.state
@@ -64,7 +66,7 @@ export class DeviceDetailComponent {
 
   protected getCreationTime(status: any) {
     if (status && status['created']) {
-      return status['created'];
+      return this.datePipe.transform(status['created'], 'medium', 'UTC')
     }
     return '-';
   }

@@ -34,7 +34,7 @@ export class SendCommandComponent {
               private notificationService: NotificationService) {
   }
 
-  onChange($event: any) {
+  protected onChange($event: any) {
     this.useText = $event.target.value == 'text';
   }
 

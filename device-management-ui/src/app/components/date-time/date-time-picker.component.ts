@@ -14,7 +14,7 @@ export class DateTimePickerComponent implements OnInit {
   @Output()
   public dateTime: EventEmitter<any> = new EventEmitter<any>();
   protected date: NgbDateStruct | any;
-  protected time: any = {hour: 0, minute: 0, secondCol: 0};
+  protected time: any = {hour: 0, minute: 0, second: 0};
 
   protected maxDate: NgbDateStruct = {year: new Date().getUTCFullYear() + 100, month: 12, day: 31};
 
@@ -33,14 +33,14 @@ export class DateTimePickerComponent implements OnInit {
     if (this.secretDate) {
       const date = new Date(this.secretDate);
       this.date = {day: date.getUTCDate(), month: date.getUTCMonth() + 1, year: date.getUTCFullYear()};
-      this.time = {hour: date.getUTCHours(), minute: date.getUTCMinutes(), secondCol: date.getUTCSeconds()};
+      this.time = {hour: date.getUTCHours(), minute: date.getUTCMinutes(), second: date.getUTCSeconds()};
     } else {
       this.date = this.calendar.getToday();
       this.onFocusOut();
     }
   }
 
-  onFocusOut() {
+  public onFocusOut() {
     this.dateTime.emit({
       date: this.date,
       time: this.time
@@ -54,5 +54,13 @@ export class DateTimePickerComponent implements OnInit {
   protected getTimezoneOffsetMessage() {
     return 'Your timezone differ to UTC time, please be aware that the UTC time (%h hour) will be taken.'
       .replace('%h', String(this.timezoneOffset));
+  }
+
+  protected getTimeString(time: any): string {
+    const paddedHour = String(time.hour).padStart(2, '0');
+    const paddedMinute = String(time.minute).padStart(2, '0');
+    const paddedSecond = String(time.second).padStart(2, '0');
+
+    return `${paddedHour}:${paddedMinute}:${paddedSecond}`;
   }
 }

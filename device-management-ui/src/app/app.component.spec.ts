@@ -1,12 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {OAuthModule} from "angular-oauth2-oidc";
+import {RouterModule} from "@angular/router";
+import {LoaderSpinnerComponent} from "./components/loading-spinner/loader-spinner.component";
+import {ToastContainerComponent} from "./components/toast-container/toast-container.component";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+      imports: [HttpClientTestingModule, OAuthModule.forRoot(), RouterModule, ],
+      declarations: [AppComponent, LoaderSpinnerComponent, ToastContainerComponent],
     }).compileComponents();
   });
 
@@ -20,12 +24,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('device-management-ui');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('device-management-ui app is running!');
   });
 });

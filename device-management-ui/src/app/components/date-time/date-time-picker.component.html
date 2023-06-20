@@ -10,6 +10,9 @@
          id="date"
          ngbDatepicker
          readonly>
+
+  <input type="text" class="form-control bg-white2" (click)="start.toggle()" [value]="getTimeString(time)" readonly>
+
   <ng-template #footerTemplate>
     <div class="pt-1 pb-2 px-2">
       <hr>
